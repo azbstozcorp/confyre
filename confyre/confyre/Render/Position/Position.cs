@@ -24,10 +24,10 @@ namespace confyre.Render.Position {
         public static Pos2 operator -(Pos2 a, Pos2 b) => new Pos2(a.X - b.X, a.Y - b.Y);
         public static Pos2 operator *(Pos2 a, Pos2 b) => new Pos2(a.X * b.X, a.Y * b.Y);
         public static Pos2 operator /(Pos2 a, Pos2 b) => new Pos2(a.X / b.X, a.Y / b.Y);
-        public static Pos2 operator +(int a, Pos2 n) => new Pos2(n.X + a, n.Y + a);
-        public static Pos2 operator -(int a, Pos2 n) => new Pos2(n.X - a, n.Y - a);
-        public static Pos2 operator *(int a, Pos2 n) => new Pos2(n.X * a, n.Y * a);
-        public static Pos2 operator /(int a, Pos2 n) => new Pos2(n.X / a, n.Y / a);
+        public static Pos2 operator +(Pos2 n, int a) => new Pos2(n.X + a, n.Y + a);
+        public static Pos2 operator -(Pos2 n, int a) => new Pos2(n.X - a, n.Y - a);
+        public static Pos2 operator *(Pos2 n, int a) => new Pos2(n.X * a, n.Y * a);
+        public static Pos2 operator /(Pos2 n, int a) => new Pos2(n.X / a, n.Y / a);
         public static Pos2 operator ++(Pos2 a) => new Pos2(++a.X, ++a.Y);
         public static Pos2 operator --(Pos2 a) => new Pos2(--a.X, --a.Y);
         public static bool operator ==(Pos2 a, Pos2 b) => a.X == b.X && a.Y == b.Y;
