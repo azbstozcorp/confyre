@@ -48,12 +48,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Render\Consprite.cs" />
     <Compile Include="Render\Position\Pair.cs" />
-    <Compile Include="Render\Position\Position.cs" />
+    <Compile Include="Render\Position\Pos2.cs" />
+    <Compile Include="Render\Position\Rect.cs" />
     <Compile Include="Render\Textel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Render\Camera.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
