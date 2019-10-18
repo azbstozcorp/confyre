@@ -5,32 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace confyre.Render.Position {
-    internal class Position : Pair<int> {
-        internal Position() : base() { }
-        internal Position(int x, int y) : base(x, y) { }
+    internal class Pos2 : Pair<int> {
+        internal Pos2() : base() { }
+        internal Pos2(int x, int y) : base(x, y) { }
 
         internal int Sum => X + Y;
         internal int Length => (int)System.Math.Sqrt((X * X) + (Y * Y));
 
         public override bool Equals(object obj) {
-            if (!(obj is Position)) return false;
-            return (obj as Position) == this;
+            if (!(obj is Pos2)) return false;
+            return (obj as Pos2) == this;
         }
         public override int GetHashCode() {
             return base.GetHashCode();
         }
 
-        public static Position operator +(Position a, Position b) => new Position(a.X + b.X, a.Y + b.Y);
-        public static Position operator -(Position a, Position b) => new Position(a.X - b.X, a.Y - b.Y);
-        public static Position operator *(Position a, Position b) => new Position(a.X * b.X, a.Y * b.Y);
-        public static Position operator /(Position a, Position b) => new Position(a.X / b.X, a.Y / b.Y);
-        public static Position operator +(int a, Position n) => new Position(n.X + a, n.Y + a);
-        public static Position operator -(int a, Position n) => new Position(n.X - a, n.Y - a);
-        public static Position operator *(int a, Position n) => new Position(n.X * a, n.Y * a);
-        public static Position operator /(int a, Position n) => new Position(n.X / a, n.Y / a);
-        public static Position operator ++(Position a) => new Position(++a.X, ++a.Y);
-        public static Position operator --(Position a) => new Position(--a.X, --a.Y);
-        public static bool operator ==(Position a, Position b) => a.X == b.X && a.Y == b.Y;
-        public static bool operator !=(Position a, Position b) => !(a.X == b.X && a.Y == b.Y);
+        public static Pos2 operator +(Pos2 a, Pos2 b) => new Pos2(a.X + b.X, a.Y + b.Y);
+        public static Pos2 operator -(Pos2 a, Pos2 b) => new Pos2(a.X - b.X, a.Y - b.Y);
+        public static Pos2 operator *(Pos2 a, Pos2 b) => new Pos2(a.X * b.X, a.Y * b.Y);
+        public static Pos2 operator /(Pos2 a, Pos2 b) => new Pos2(a.X / b.X, a.Y / b.Y);
+        public static Pos2 operator +(int a, Pos2 n) => new Pos2(n.X + a, n.Y + a);
+        public static Pos2 operator -(int a, Pos2 n) => new Pos2(n.X - a, n.Y - a);
+        public static Pos2 operator *(int a, Pos2 n) => new Pos2(n.X * a, n.Y * a);
+        public static Pos2 operator /(int a, Pos2 n) => new Pos2(n.X / a, n.Y / a);
+        public static Pos2 operator ++(Pos2 a) => new Pos2(++a.X, ++a.Y);
+        public static Pos2 operator --(Pos2 a) => new Pos2(--a.X, --a.Y);
+        public static bool operator ==(Pos2 a, Pos2 b) => a.X == b.X && a.Y == b.Y;
+        public static bool operator !=(Pos2 a, Pos2 b) => !(a.X == b.X && a.Y == b.Y);
     }
 }
