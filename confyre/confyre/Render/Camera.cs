@@ -11,7 +11,7 @@ namespace confyre.Render {
         internal int zoom;
 
         internal Camera() { }
-        internal Camera(Pos2 position) : this() { }
+        internal Camera(Pos2 position) : this() { location = position; }
         internal Camera(Pos2 position, int zoom) : this(position) { this.zoom = zoom; }
 
         internal Pos2 ScreenToWorld(Pos2 screenLocation) => screenLocation / zoom + location;

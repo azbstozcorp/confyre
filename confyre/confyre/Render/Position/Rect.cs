@@ -8,14 +8,33 @@ namespace confyre.Render.Position {
     internal class Rect {
         Pos2 topLeft, topRight, bottomLeft, bottomRight;
 
+        internal Rect() { }
+        internal Rect(Pos2 pos1, Pos2 pos2) {
+            if(pos2.X < pos1.X || pos2.Y < pos1.Y) {
+                Pos2 temp = pos1;
+                pos1 = pos2;
+                pos2 = temp;
+            }
+
+            topLeft = pos1;
+            bottomRight = pos2;
+            topRight = new Pos2(pos2.X, pos1.Y);
+            bottomLeft = new Pos2(pos1.X, pos2.Y);
+        }
+
         internal int Top => topLeft.Y;
         internal int Bottom => bottomLeft.Y;
         internal int Left => topLeft.X;
         internal int Right => topRight.X;
 
-        void MoveBy(Pos2 amount) {
-            for (int i = 0; i < 4; i++) this[i] += amount;
-        }
+        internal int Width => Right - Left;
+        internal int Height => Bottom - Top;
+
+        internal void MoveBy(Pos2 amount) { for (int i = 0; i <= 3; i++) this[i] += amount; }
+        internal void MoveBy(int amountX, int amountY) => MoveBy(new Pos2(amountX, amountY));
+
+        internal bool Intersects(Rect other) => ((Top >= other.Top && Top <= other.Bottom) || (Bottom <= other.Bottom && Bottom >= other.Top))
+                                             && ((Left >= other.Left && Left <= other.Right) || (Right <= other.Right && Right >= other.Left));
 
         public Pos2 this[int index] {
             get {
