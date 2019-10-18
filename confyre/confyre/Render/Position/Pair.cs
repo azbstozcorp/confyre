@@ -18,5 +18,7 @@ namespace confyre.Render.Position {
             values[1] = y;
         }
         ~Pair() { }
+
+        public T this[int index] { get => values[index]; set => values[index] = value; }
     }
 }
