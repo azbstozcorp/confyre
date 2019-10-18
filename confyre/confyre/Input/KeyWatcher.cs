@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace confyre.Input {
     internal static class KeyWatcher {
         static Thread watcher = new Thread(Do);
-        static ConcurrentDictionary<ConsoleKey, bool> keyStates = new ConcurrentDictionary<ConsoleKey, bool>();
+        internal static event EventHandler<KeyEventArgs> KeyPressed;
+
 
         static KeyWatcher() {
             watcher.Start();
@@ -17,16 +18,13 @@ namespace confyre.Input {
 
         static void Do() {
             while (true) {
-                keyStates = new ConcurrentDictionary<ConsoleKey, bool>();
-                ConsoleKey key = Console.ReadKey(true).Key;
-                keyStates[key] = true;
-                Thread.Sleep(10);
+                if (Console.KeyAvailable) KeyPressed(null, new KeyEventArgs(Console.ReadKey(true).Key));
             }
         }
 
-        /// <summary>
-        /// Checks if the specified key was pressed within the last 10ms.
-        /// </summary>
-        internal static bool KeyPressed(ConsoleKey key) => keyStates[key];
+        internal class KeyEventArgs : EventArgs {
+            internal ConsoleKey key;
+            public KeyEventArgs(ConsoleKey key) { this.key = key; }
+        }
     }
 }
