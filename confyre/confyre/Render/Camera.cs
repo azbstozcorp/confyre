@@ -14,6 +14,7 @@ namespace confyre.Render {
         internal Camera(Pos2 position) { location = position; }
         internal Camera(Pos2 position, float zoom) : this(position) { this.zoom = zoom; }
 
-
+        internal void ZoomIn(float amount) { zoom *= amount; }
+        internal void ZoomOut(float amount) { zoom -= amount; }
     }
 }
