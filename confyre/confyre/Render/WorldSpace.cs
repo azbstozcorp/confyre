@@ -22,5 +22,20 @@ namespace confyre.Render {
             list.AddRange(sprites.Where(x => x.WithinRectangle(worldSpace)));
             return list;
         }
+
+        internal char GetTopChar(List<Consprite> sprites, int index) {
+            return 'z';
+        }
+
+        internal void Render(Loop.App context) {
+            var screenInProgress = new StringBuilder(context.ScreenWidth*context.ScreenHeight);
+            var toRender = AABBCull();
+
+            for(int i = 0; i < screenInProgress.Length; i++) {
+                screenInProgress[i] = GetTopChar(toRender, i);
+            }
+
+            Console.Write(screenInProgress.ToString());
+        }
     }
 }
