@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Input\KeyWatcher.cs" />
+    <Compile Include="Loop\App.cs" />
     <Compile Include="Math\Trig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Render\Position\Position.cs" />
     <Compile Include="Render\Position\Rect.cs" />
     <Compile Include="Render\Textel.cs" />
+    <Compile Include="Render\WorldSpace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
