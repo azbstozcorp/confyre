@@ -23,19 +23,24 @@ namespace confyre.Render {
             return list;
         }
 
-        internal char GetTopChar(List<Consprite> sprites, int index) {
-            return 'z';
-        }
-
         internal void Render(Loop.App context) {
-            var screenInProgress = new StringBuilder(context.ScreenWidth*context.ScreenHeight);
-            var toRender = AABBCull();
+            // Need to write once for each colour, so
+            // -- collect all textels of one colour into a collection for each
+            // -- store to a stringbuilder for each
+            // -- write out to console in relevant colour
+            var megaSprite = Consprite.AssembleMegaSprite(AABBCull());
+            var megaSpriteColours = new List<Consprite>();
+            foreach (ConsoleColor c in Enum.GetValues(typeof(ConsoleColor))) megaSpriteColours.Add(megaSprite.WithColour(c));
 
-            for(int i = 0; i < screenInProgress.Length; i++) {
-                screenInProgress[i] = GetTopChar(toRender, i);
+            foreach (Consprite c in megaSpriteColours) {
+                var screenInProgress = new StringBuilder(context.ScreenWidth * context.ScreenHeight);
+
+                for (int i = 0; i < c.Width; i++) for (int j = 0; j < c.Height; j++) if (c.At(i, j).Display != ' ') screenInProgress[j * context.ScreenWidth + i] = c.At(i, j).Display;
+
+                Console.BackgroundColor = c.At(0, 0).Colour;
+                Console.SetCursorPosition(0, 0);
+                Console.Write(screenInProgress.ToString());
             }
-
-            Console.Write(screenInProgress.ToString());
         }
     }
 }
