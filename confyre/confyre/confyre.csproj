@@ -55,6 +55,7 @@
     <Compile Include="Render\Position\Rect.cs" />
     <Compile Include="Render\Textel.cs" />
     <Compile Include="Render\WorldSpace.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

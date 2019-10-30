@@ -20,5 +20,7 @@ namespace confyre.Render {
         public object Clone() {
             return new Textel { Display = Display, Colour = Colour };
         }
+
+        public static implicit operator Textel(char c) => new Textel(c, ConsoleColor.White);
     }
 }
